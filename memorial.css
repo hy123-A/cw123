@@ -1,0 +1,1248 @@
+/* 页面整体优化 */
+main {
+    overflow-x: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Hero区域优化 */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/memorial-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, white, transparent);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInDown 1s ease;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 纪念品展示区优化 */
+.memorial-products {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, var(--secondary-color) 0%, white 100%);
+    position: relative;
+}
+
+.products-grid {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-overlay .btn {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-card:hover .product-overlay .btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.product-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.product-info h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.product-info p {
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+/* 定制流程优化 */
+.customization-process {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, white, var(--secondary-color));
+    position: relative;
+}
+
+.process-steps {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-color);
+    z-index: 1;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.3);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.step-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    opacity: 0.2;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.step:hover .step-icon {
+    transform: scale(1.1);
+}
+
+.step:hover .step-icon::before {
+    transform: scale(1.2);
+    opacity: 0.3;
+}
+
+.step h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.step p {
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+/* 客户案例优化 */
+.case-card {
+    perspective: 1000px;
+}
+
+.case-content {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.case-card:hover .case-content {
+    transform: translateZ(20px);
+}
+
+.case-meta {
+    position: relative;
+}
+
+.case-meta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    right: -2rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+/* 预约表单优化 */
+.booking {
+    position: relative;
+    overflow: hidden;
+}
+
+.booking::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/images/pattern-light.png') repeat;
+    opacity: 0.05;
+    animation: backgroundScroll 20s linear infinite;
+}
+
+@keyframes backgroundScroll {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
+}
+
+.booking-form .form-group {
+    position: relative;
+    overflow: hidden;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.booking-form input:focus + label,
+.booking-form select:focus + label,
+.booking-form textarea:focus + label {
+    transform: translateY(-20px);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+/* 滚动动画优化 */
+.scroll-reveal {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.from-left {
+    transform: translateX(-50px);
+}
+
+.scroll-reveal.from-right {
+    transform: translateX(50px);
+}
+
+.scroll-reveal.from-bottom {
+    transform: translateY(50px);
+}
+
+.scroll-reveal.visible {
+    transform: translate(0);
+    opacity: 1;
+}
+
+/* 加载动画 */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.loading {
+    background: linear-gradient(90deg, 
+        var(--secondary-color) 25%, 
+        var(--accent-color) 50%, 
+        var(--secondary-color) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* 交互反馈 */
+.btn.primary:active {
+    transform: scale(0.98);
+}
+
+.form-group input:not(:placeholder-shown):valid {
+    border-color: #4CAF50;
+}
+
+.form-group input:not(:placeholder-shown):invalid {
+    border-color: #f44336;
+}
+
+/* 打印样式 */
+@media print {
+    .hero,
+    .booking,
+    .footer {
+        display: none;
+    }
+
+    .memorial-products,
+    .customization-process,
+    .case-studies {
+        page-break-inside: avoid;
+    }
+}
+
+/* 客户案例样式优化 */
+.case-studies {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, white 100%);
+    position: relative;
+}
+
+.cases-grid {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.case-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    perspective: 1000px;
+}
+
+.case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.case-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.case-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.case-card:hover .case-image img {
+    transform: scale(1.1);
+}
+
+.case-content {
+    padding: 2rem;
+    background: white;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.case-content h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.case-content p {
+    color: var(--light-text);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.case-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.case-meta img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+.case-meta-info h4 {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.case-meta-info p {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin: 0.2rem 0 0;
+}
+
+/* 预约定制表单样式优化 */
+.booking {
+    padding: 6rem 0;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../assets/images/booking-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+
+.booking-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.booking-content {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.booking-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.booking-content p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.booking-form {
+    background: rgba(255,255,255,0.1);
+    padding: 3rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+.form-group select option {
+    background: var(--text-color);
+    color: white;
+    padding: 1rem;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.btn.primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.primary:hover {
+    background: var(--accent-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.4);
+}
+
+/* 响应式优化 */
+@media (max-width: 1024px) {
+    .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cases-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .case-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-content h2 {
+        font-size: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* 纪念品视频展示区样式 */
+.memorial-showcase {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, var(--secondary-color) 0%, white 100%);
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+}
+
+/* 视频卡片样式 */
+.video-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.video-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* 纪念品展示区样式 */
+.memorial-products {
+    padding: 6rem 0;
+    background: white;
+}
+
+.products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.product-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.product-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-description {
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-description {
+    transform: translateY(0);
+}
+
+.product-description p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
+    background: white;
+}
+
+.product-info h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.product-info p {
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.video-card, .product-card {
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+.video-card:nth-child(1), .product-card:nth-child(1) { animation-delay: 0.2s; }
+.video-card:nth-child(2), .product-card:nth-child(2) { animation-delay: 0.4s; }
+.video-card:nth-child(3), .product-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .video-grid, .products-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .product-image {
+        height: 250px;
+    }
+
+    .product-description {
+        padding: 1.5rem;
+    }
+
+    .section-intro {
+        margin-bottom: 3rem;
+    }
+}
+
+/* 主要内容区域 */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* 故事展示区域样式 */
+.stories-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.story-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.story-image {
+    flex: 1;
+    padding: 2rem;
+}
+
+.video-wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.story-container:hover .video-wrapper video {
+    transform: scale(1.05);
+}
+
+/* 文字内容样式 */
+.story-text {
+    padding: 2rem;
+}
+
+.story-text h2 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.story-quote {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    font-style: italic;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.story-quote::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    font-size: 3rem;
+    color: var(--accent-color);
+    font-family: serif;
+}
+
+.story-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.story-details {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--secondary-color);
+    margin-top: 6rem;
+}
+
+.footer p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .story-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .story-text h2 {
+        font-size: 2rem;
+    }
+
+    .story-quote {
+        font-size: 1.2rem;
+    }
+
+    .story-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* 头部区域样式 */
+.hero-section {
+    padding: 80px 0;
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.hero-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* 图片展示区样式 */
+.image-gallery {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.gallery-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text {
+        font-size: 1.1rem;
+    }
+
+    .gallery-item img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .gallery-item {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+}
+
+/* 身后之爱页面样式 */
+
+/* 头部区域样式 */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/images/memorial-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero-text {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* 纪念品展示区样式 */
+.memorial-items {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.items-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+}
+
+.memorial-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.memorial-item:hover {
+    transform: translateY(-5px);
+}
+
+.item-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.memorial-item:hover .item-image img {
+    transform: scale(1.05);
+}
+
+.item-content {
+    padding: 30px;
+}
+
+.item-content h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.item-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 纪念活动区样式 */
+.memorial-events {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.events-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    gap: 40px;
+}
+
+.event-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.event-image {
+    flex: 1;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-item:hover .event-image img {
+    transform: scale(1.05);
+}
+
+.event-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.event-content h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.event-content p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .items-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-item {
+        flex-direction: column;
+    }
+
+    .event-item:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-text {
+        font-size: 1.1em;
+    }
+
+    .item-image {
+        height: 250px;
+    }
+
+    .event-content h3 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .section-title {
+        font-size: 1.6em;
+    }
+
+    .item-content {
+        padding: 20px;
+    }
+}
+
+.event-video {
+    flex: 1;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+.event-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .event-video {
+        width: 100%;
+        height: 300px;
+    }
+} 
